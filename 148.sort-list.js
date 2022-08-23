@@ -19,7 +19,9 @@
 var sortList = function (head) {
     if (head === null || head.next === null) return head;
 
-    let mid = getMid(head);
+    let n = getCount(head);
+    let start = head;
+
     let leftlist = head.slice(0, mid);
     let rightlist = head.slice(mid);
 
@@ -56,6 +58,16 @@ function getMid(ListNode, head) {
     while (head !== null && head.next !== null) {
 
     }
+}
+
+// count how many nodes in the linked list
+function getCount(head) {
+    let count = 0;
+    while (head !== null) {
+        head = head.next;
+        count++;
+    }
+    return count;
 }
 
 
