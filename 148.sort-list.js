@@ -16,63 +16,72 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+
 var sortList = function (head) {
     if (head === null || head.next === null) return head;
 
-    let n = getCount(head);
-    let start = head;
-
-    let leftlist = head.slice(0, mid);
-    let rightlist = head.slice(mid);
-
-    let leftsort = sortList(leftlist);
-    let rightsort = sortList(rightlist);
-    console.log(head);
+    let mid = getMid(head);
+    let leftsort = sortList(head);
+    let rightsort = sortList(mid);
     return merge(leftsort, rightsort);
 };
 
-function merge(listA, listB) {
-    let mergeList = [];
-    let ai = 0;
-    let bi = 0;
-    // iterate through listA and listB, add the smaller one to the arr
-    while (ai < listA.length || bi < listB.length) {
-        if (ai === listA.length) {
-            mergeList.push(listB[bi]);
-            bi++;
-        } else if (bi === listB.length) {
-            mergeList.push(listA[ai]);
-        } else if (listA[ai] < listB[bi]) {
-            mergeList.push(listA[ai]);
-            ai++;
+function merge(list1, list2) {
+    let newHead = new ListNode();
+    let tail = new ListNode();
+    tail = newHead;
+
+    // iterate through listA and listB, add the smaller one to the new list
+    while (list1 !== null && list2 !== null) {
+        if (list1.val < list2.val) {
+            tail.next = list1;
+            list1 = list1.next;
+            tail = tail.next;
         } else {
-            mergeList.push(listB[bi]);
-            bi++;
+            tail.next = list2;
+            list2 = list2.next;
+            tail = tail.next;
         }
     }
-    return mergeList;
+    tail.next = (list1 !== null) ? list1 : list2;
+    // if (listA !== null) {
+    //     tail.next = listA;
+    // } else {
+    //     tail.next = listB;
+    // }
+    return newHead.next;
 }
 
-function getMid(ListNode, head) {
-    let midPrev = null;
-    while (head !== null && head.next !== null) {
+function getMid(head) {
 
+    let midHead = null;
+    let slow = head;
+    let fast = head
+    while (fast !== null && fast.next !== null) {
+        midHead = slow;
+        slow = slow.next;
+        fast = fast.next.next;
     }
-}
-
-// count how many nodes in the linked list
-function getCount(head) {
-    let count = 0;
-    while (head !== null) {
-        head = head.next;
-        count++;
-    }
-    return count;
+    //disconnect, split them into 2 lists
+    let secondHalf = midHead.next;
+    midHead.next = null;
+    return secondHalf;
 }
 
 
-arrA = [2, 4];
-arrB = [1, 3]
-merge(arrA, arrB);
-// sortList(arr);
+
+
+// Solution2:
+// // count how many nodes in the linked list
+// function getCount(head) {
+//     let count = 0;
+//     while (head !== null) {
+//         head = head.next;
+//         count++;
+//     }
+//     return count;
+// }
+
+
 // @lc code=end
