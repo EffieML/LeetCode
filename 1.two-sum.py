@@ -14,5 +14,5 @@ class Solution:
             else:
                 d[nums[i]] = i
 
-
+# time O(n) worst time O(n^2), space O(n)
 # @lc code=end
