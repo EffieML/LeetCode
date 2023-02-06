@@ -101,6 +101,17 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        oldCopy = {}
+        oldCopy = {None: None}
 
-        # @lc code=end
+        cur = head
+        while cur:
+            copy = Node(cur.val)
+            oldCopy[cur] = copy
+            cur = cur.next
+
+
+head = [[7, None], [13, 0], [11, 4], [10, 2], [1, 0]]
+test = Solution()
+test.copyRandomList(head)
+
+# @lc code=end
