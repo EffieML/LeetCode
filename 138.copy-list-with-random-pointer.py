@@ -109,9 +109,26 @@ class Solution:
             oldCopy[cur] = copy
             cur = cur.next
 
+        cur = head
+        while cur:
+            copy = oldCopy[cur]
+            copy.next = oldCopy[cur.next]
+            copy.random = oldCopy[cur.random]
+            cur = cur.next
+        print("hash map: ", oldCopy)
+        print("linked list copy: ", oldCopy[head].val)
+        return oldCopy[head]
 
-head = [[7, None], [13, 0], [11, 4], [10, 2], [1, 0]]
-test = Solution()
-test.copyRandomList(head)
 
 # @lc code=end
+# head = [[7, None], [13, 0], [11, 4], [10, 2], [1, 0]]
+head = Node(7)
+head.next = Node(13)
+head.next.next = Node(11)
+head.next.next.next = Node(10)
+head.next.next.next.next = Node(1)
+head.next.random = head
+head.next.next.next.random = head.next.next
+head.next.next.random = head.next.next.next.next
+test = Solution()
+test.copyRandomList(head)
