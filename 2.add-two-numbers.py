@@ -64,11 +64,10 @@
 #         self.next = next
 
 # iterate once, just add the 2 list, if sum is bigger than 10, store the 10th as carry for the next iteration
-# 1. create dummy node, set as curr
-# 2. set carry =0
-# 3. if l1.val or l2.val or carry exist, then we can add them
-# 4. use result to calculate new carry and new val, and created new List Node
-# 5. move to next location
+# 1. create dummy node, set as curr, set carry =0
+# 2. if l1 or l2 or carry exist, then we can add them
+# 3. use result to calculate new carry and new val, and created new List Node
+# 4. update pointers for l1, l2 and new sum list, as move all nodes in the lists to next location, keep doing the iteration
 # T= O(n), M=O(n)
 
 class Solution:
