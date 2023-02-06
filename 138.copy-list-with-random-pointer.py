@@ -92,8 +92,15 @@ class Node:
         self.next = next
         self.random = random
 
+# iterate through the linked list twice
+# first time store the linked list Value
+# 2nd time store the pointers
+# used hash map to easy get the value info
+# T = O(n) 2 iterations; M=O(n) hash map extra space
+
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        oldCopy = {}
 
         # @lc code=end
