@@ -20,6 +20,5 @@ class Solution:
             if diff in d:
                 return [d[diff], i]
             d[n] = i
-
 # time O(n) worst time O(n^2), space O(n)
 # @lc code=end
