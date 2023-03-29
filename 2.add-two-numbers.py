@@ -72,6 +72,7 @@
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+
         dummy = ListNode()
         curr = dummy
         carry = 0
@@ -81,7 +82,7 @@ class Solution:
             # compute new digit
             val = v1+v2+carry
             # calculate new carry and new val
-            carry = val // 10
+            carry = val // 10  # floor division -15//2= -8
             val = val % 10
             curr.next = ListNode(val)
             # update pointers for l1, l2 and sum list to the next
